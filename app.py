@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, session, redirect, request
 from functools import wraps
 from formulai import generate, lecture
@@ -5,7 +7,8 @@ from user.models import User
 from user import db
 
 app = Flask(__name__)
-app.secret_key = b'\xcf\xda\xa5\xc5#\xfa\xb6\xc7\x91\xc7\xdc\x13c\xe8x\xc3'
+secret_key = os.getenv("SECRET_KEY")
+app.secret_key = secret_key
 
 # start the database engine
 db.start_db()
