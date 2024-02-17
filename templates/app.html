@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FORsheets</title>
+    <link
+            rel="stylesheet"
+            href="/static/styles/app.css"/>
+    <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"/>
+    <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
+            rel="stylesheet"
+    />
+</head>
+    <body>
+        <header id="title">FORsheets</header>
+        <div class="outer-container">
+            <div id="container">
+                <div id="container-header">
+                    <section><h3>Text</h3></section>
+                    <section id="section-center"><h3>Convert</h3></section>
+                    <section><h3>Formula</h3></section>
+                </div>
+                <div id="converter">
+                    <div id="entry-div">
+                        <label for="entry"></label><textarea id="entry" name="entry" placeholder="Enter text here"></textarea>
+                        <button id="microphone-button" type="submit">
+                            <img id="microphone" src="/static/images/microphone2.png" alt=""/>
+                        </button>
+                    </div>
+                    <div id="conv-div">
+                        <button
+                                id="convert-button"
+                                type="submit">
+                            <img
+                                    id="convert-icon"
+                                    src="/static/images/conv1.png"
+                                    alt="Conversion icon"
+                            />
+                        </button>
+                    </div>
+                    <div id="result-div">
+                        <label for="result"></label><textarea id="result" disabled></textarea>
+                        <button id="explain-button" type="submit">
+                            <img id="explain" src="/static/images/explain.png" alt=""/>
+                        </button>
+                        <button id="copy-button" type="submit">
+                            <img id="copy" src="/static/images/copy.png" alt=""/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="/static/scripts/index.js"></script>
+    </body>
+</html>
