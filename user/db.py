@@ -1,5 +1,4 @@
 import os
-
 import mongoengine
 
 db_url = os.getenv("MONGODB_STRING")

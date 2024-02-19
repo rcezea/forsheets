@@ -1,5 +1,4 @@
-from flask import Flask
-from app import app
+from app import app, jsonify
 from user.models import Users
 
 
@@ -15,4 +14,7 @@ def signout():
 
 @app.post('/user/login')
 def login():
-    return Users().login()
+    try:
+        return Users().login()
+    except Exception as e:
+        return jsonify({"error": e}), 401

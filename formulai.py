@@ -7,7 +7,6 @@ import json
 from openai import OpenAI
 from typing import Any
 from dotenv import load_dotenv
-from openai.types.chat import ChatCompletion
 
 load_dotenv()
 client = OpenAI(
@@ -21,7 +20,7 @@ def generate(user_input: str) -> Any:
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system",
-             "content": "Strictly generate an spreadsheet formula from user input. Return 'invalid input' for bad input"},
+             "content": "AI powered text to formula generator that generates spreadsheet formula from user input"},
             {"role": "user", "content": "{}".format(user_input)}
         ],
         temperature=0,

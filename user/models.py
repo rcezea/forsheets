@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, session, redirect
 from mongoengine.errors import NotUniqueError
 from passlib.hash import pbkdf2_sha256
 from user.history import User
+from user import db
 import uuid
 
 
@@ -19,7 +20,6 @@ class Users:
             "email": request.form.get('email'),
         }
 
-
         # check if user exists already
         try:
             new_user = User()
@@ -35,6 +35,7 @@ class Users:
 
     def signout(self):
         session.clear()
+        # kill the database engine
         return redirect('/')
 
     def login(self):

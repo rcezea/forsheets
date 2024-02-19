@@ -1,8 +1,8 @@
 $("form[name=signup_form]").submit(function(e) {
 
-  var $form = $(this);
-  var $error = $form.find(".error");
-  var data = $form.serialize();
+  const $form = $(this);
+  const $error = $form.find(".error");
+  const data = $form.serialize();
 
   $.ajax({
     url: "/user/signup",
@@ -22,9 +22,9 @@ $("form[name=signup_form]").submit(function(e) {
 
 $("form[name=login_form]").submit(function(e) {
 
-  var $form = $(this);
-  var $error = $form.find(".error");
-  var data = $form.serialize();
+  const $form = $(this);
+  const $error = $form.find(".error");
+  const data = $form.serialize();
 
   $.ajax({
     url: "/user/login",
