@@ -1,11 +1,14 @@
 import os
+from datetime import timedelta
 from functools import wraps
+
+from apscheduler.triggers.interval import IntervalTrigger
 from flask import Flask, render_template, session, redirect, request, url_for, jsonify
+from flask_apscheduler import APScheduler
+
 from formulai import generate, lecture
 from user import db
 from user.models import User
-from flask_apscheduler import APScheduler
-from apscheduler.triggers.interval import IntervalTrigger
 
 # start the database engine
 db.start_db()
@@ -15,6 +18,7 @@ app = Flask(__name__)
 secret_key = os.getenv("SECRET_KEY")
 app.secret_key = secret_key
 app.config['SCHEDULER_API_ENABLED'] = True
+app.permanent_session_lifetime = timedelta(minutes=30)
 
 
 # Decorator
@@ -43,11 +47,6 @@ def login_required(f):
 #                 return redirect('/user/signout')
 #     return wrap
 
-
-# routes
-from user import routes
-
-
 @app.before_request
 def check_user_existence():
     if request.endpoint == 'formula':
@@ -58,6 +57,30 @@ def check_user_existence():
             if not user:
                 # User is not found in the database, redirect to home
                 return redirect(url_for('home'))
+
+
+# @app.before_request
+# def update_last_activity():
+#     session.permanent = True
+#     app.permanent_session_lifetime = timedelta(seconds=30)  # Setting the session timeout to 30 seconds
+    # session['last_activity'] = datetime.utcnow()
+
+
+# @app.before_request
+# def check_last_activity():
+#     if 'last_activity' in session:
+#         last_activity_time = session['last_activity']
+#         current_time = datetime.utcnow()
+#         inactivity_duration = current_time - last_activity_time
+#         max_inactivity_duration = timedelta(seconds=30)
+#
+#         if inactivity_duration > max_inactivity_duration:
+#             # Redirect to the login page or another authentication route
+#             return redirect(url_for('home'))
+
+# routes
+from user import routes
+
 
 
 @app.route('/')

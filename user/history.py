@@ -1,5 +1,5 @@
 import mongoengine
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 class History(mongoengine.EmbeddedDocument):

@@ -1,17 +1,18 @@
 
 
 body {
-    background-color: #1d267d;
+    background-color: #0c1107;
     /*background-image: "cloud.png";*/
     text-align: center;
     height: 100vw;
+    overflow: hidden;
 }
 
 header {
-    font-family: "Monoton", cursive;
+    font-family: Monaco;
     font-size: 60px;
     font-weight: normal;
-    color: lightgreen;
+    color: white;
     text-align: left;
 }
 
@@ -36,7 +37,7 @@ header img {
     /*flex-direction: column;*/
     /*justify-content: center;*/
     /*align-items: center;*/
-    background-color: #5C469C;
+    background-color: #5e888c;
     margin: 80px auto 0;
     border-radius: 15px;
     padding: 20px 10px 0 10px;
@@ -55,7 +56,7 @@ header img {
     align-content: center;
     box-sizing: content-box;
     border-radius: 20px;
-    background-color: #D4ADFC;
+    background-color: #bdd4e1;
 
 }
 
@@ -75,13 +76,12 @@ header img {
 #entry-div {
     width: 40%;
     height: 80%;
-    background-color: #D4ADFC;
+    background-color: #bdd4e1;
     border-radius: 15px;
     resize: none;
     padding: 5px;
-    margin: 0;
     font-size: 40px;
-    margin-top: 20px;
+    margin: 20px 0 0;
     position: relative;
 }
 
@@ -94,7 +94,7 @@ header img {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: #D4ADFC;
+    background-color: #bdd4e1;
 }
 
 #microphone {
@@ -108,9 +108,10 @@ header img {
     height: 100%;
     box-sizing: border-box;
     border-radius: 13px;
-    background-color: #D4ADFC;
+    background-color: #bdd4e1;
     resize: none;
     font-size: 20px;
+    border-color: #bdd4e1;
 }
 
 #conv-div {
@@ -141,7 +142,7 @@ header img {
     width: 40%;
     height: 80%;
     /*background-color: #cecefe;*/
-    background-color: #D4ADFC;
+    background-color: #bdd4e1;
     border-radius: 15px;
     resize: none;
     padding: 5px;
@@ -159,7 +160,7 @@ header img {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    background-color: #D4ADFC;
+    background-color: #bdd4e1;
 }
 
 #copy {
@@ -178,7 +179,7 @@ header img {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: #D4ADFC;
+    background-color: #bdd4e1;
 }
 
 #explain {
@@ -187,6 +188,17 @@ header img {
     margin: 0;
 }
 
+#survey {
+    color: darkslategrey;
+}
+.survey {
+    color: white;
+}
+
+textarea {
+    background-color: #bdd4e1;
+    border: none;
+}
 
 /* Phone screen portrait */
 @media screen and (min-width: 230px) and (orientation: portrait){
