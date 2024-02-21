@@ -2,9 +2,9 @@ import os
 from datetime import timedelta
 from functools import wraps
 
-from apscheduler.triggers.interval import IntervalTrigger
+# from apscheduler.triggers.interval import IntervalTrigger
 from flask import Flask, render_template, session, redirect, request, url_for, jsonify
-from flask_apscheduler import APScheduler
+# from flask_apscheduler import APScheduler
 
 from formulai import generate, lecture
 from user import db
@@ -17,7 +17,7 @@ db.start_db()
 app = Flask(__name__)
 secret_key = os.getenv("SECRET_KEY")
 app.secret_key = secret_key
-app.config['SCHEDULER_API_ENABLED'] = True
+# app.config['SCHEDULER_API_ENABLED'] = True
 app.permanent_session_lifetime = timedelta(minutes=30)
 
 
@@ -173,8 +173,8 @@ def explain():
 """ reset users' access daily """
 
 # Initialize the scheduler
-scheduler = APScheduler()
-scheduler.init_app(app)
+# scheduler = APScheduler()
+# scheduler.init_app(app)
 
 
 # Define a function to reset daily limits for all users
@@ -185,12 +185,12 @@ def reset_daily_limits():
 
 
 # Use IntervalTrigger with a daily interval (24 hours)
-scheduler.add_job(
-    func=reset_daily_limits,
-    trigger=IntervalTrigger(hours=24),
-    id='reset_daily_limits',
-    replace_existing=True,
-)
+# scheduler.add_job(
+#     func=reset_daily_limits,
+#     trigger=IntervalTrigger(hours=24),
+#     id='reset_daily_limits',
+#     replace_existing=True,
+# )
 
 # Run the scheduler
-scheduler.start()
+# scheduler.start()
