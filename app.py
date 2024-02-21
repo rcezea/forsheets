@@ -126,6 +126,7 @@ def presence():
 
 @app.get('/formula')
 def formula():
+    reset_daily_limits()
     # Check formula_counter
     user = User.objects(email=session['user']['email']).first()
     if user.formula_counter <= 0:
