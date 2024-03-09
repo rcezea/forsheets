@@ -1,12 +1,45 @@
+"""
+Flask application for spreadsheet-oriented formula generation and explanation.
+
+This application allows users to input natural language descriptions and receive corresponding spreadsheet formulas.
+It also provides explanations for given spreadsheet formulas. Users have daily limits for both formula generation and explanation.
+
+The application includes the following components:
+1. Flask routes for home, dashboard, user presence, formula generation, and explanation.
+2. Decorator (`login_required`) for protecting routes that require user authentication.
+3. Before request function (`check_user_existence`) to ensure the existence of the current user.
+4. Background job using the APScheduler library to reset daily limits for all users.
+
+Functions:
+- `generate(user_input: str) -> Any`: Generates a spreadsheet formula from user input.
+- `lecture(user_input: str) -> Any`: Explains a given spreadsheet formula.
+
+Routes:
+1. `/`: Application main route. Redirects to home if not authenticated, otherwise renders the main application page.
+2. `/home`: Home route to display the landing page.
+3. `/dashboard/`: Dashboard route to display user-specific information.
+4. `/user`: Route to check user presence.
+
+Note:
+- User authentication is managed using the Flask `session` object.
+- The application uses MongoDB for data storage.
+
+Example Usage:
+- Run the Flask application to start the server.
+    a. gunicorn app:app
+    b. flask --app app.py --debug run
+- Access the application at the specified routes.
+
+Make sure to set the required environment variables, such as SECRET_KEY and OPENAI_API_KEY, before running the application.
+"""
+
 import os
 from datetime import timedelta
 from functools import wraps
 
-# from apscheduler.triggers.interval import IntervalTrigger
 from flask import Flask, render_template, session, redirect, request, url_for, jsonify
-# from flask_apscheduler import APScheduler
 
-from formulai import generate, lecture
+from forsheets import generate, lecture
 from user import db
 from user.models import User
 
@@ -17,7 +50,6 @@ db.start_db()
 app = Flask(__name__)
 secret_key = os.getenv("SECRET_KEY")
 app.secret_key = secret_key
-# app.config['SCHEDULER_API_ENABLED'] = True
 app.permanent_session_lifetime = timedelta(minutes=30)
 
 
@@ -35,18 +67,6 @@ def login_required(f):
     return wrap
 
 
-# # check if current user exists in database
-# def check_user_exist(f):
-#     @wraps(f)
-#     def wrap(*args, **kwargs):
-#         if session:
-#             curr_user = User.objects(email=session['user']['email']).first()
-#             if curr_user:
-#                 return f(*args, **kwargs)
-#             else:
-#                 return redirect('/user/signout')
-#     return wrap
-
 @app.before_request
 def check_user_existence():
     if request.endpoint == 'formula':
@@ -59,28 +79,8 @@ def check_user_existence():
                 return redirect(url_for('home'))
 
 
-# @app.before_request
-# def update_last_activity():
-#     session.permanent = True
-#     app.permanent_session_lifetime = timedelta(seconds=30)  # Setting the session timeout to 30 seconds
-    # session['last_activity'] = datetime.utcnow()
-
-
-# @app.before_request
-# def check_last_activity():
-#     if 'last_activity' in session:
-#         last_activity_time = session['last_activity']
-#         current_time = datetime.utcnow()
-#         inactivity_duration = current_time - last_activity_time
-#         max_inactivity_duration = timedelta(seconds=30)
-#
-#         if inactivity_duration > max_inactivity_duration:
-#             # Redirect to the login page or another authentication route
-#             return redirect(url_for('home'))
-
 # routes
 from user import routes
-
 
 
 @app.route('/')
@@ -107,21 +107,15 @@ def dashboard():
 
 @app.get('/user')
 def presence():
-    user = User.objects(email=session['user']['email']).first()
-    if user:
-        data = {"session": session["logged_in"]}
-    else:
-        data = {"session": False}
+    if 'user' in session:
+        user = User.objects(email=session['user']['email']).first()
+        if user:
+            data = {"session": session["logged_in"]}
+        else:
+            data = {"session": False}
+        return jsonify(data)
+    data = {"session": False}
     return jsonify(data)
-
-
-# @app.get('/user')
-# def presence():
-#     if 'user' in session and session['user']['email']:
-#         data = {"session": True}
-#     else:
-#         data = {"session": False}
-#     return data
 
 
 @app.get('/formula')
@@ -172,25 +166,9 @@ def explain():
 
 """ reset users' access daily """
 
-# Initialize the scheduler
-# scheduler = APScheduler()
-# scheduler.init_app(app)
-
 
 # Define a function to reset daily limits for all users
 def reset_daily_limits():
     users = User.objects()
     for user in users:
         user.reset_daily_limits()
-
-
-# Use IntervalTrigger with a daily interval (24 hours)
-# scheduler.add_job(
-#     func=reset_daily_limits,
-#     trigger=IntervalTrigger(hours=24),
-#     id='reset_daily_limits',
-#     replace_existing=True,
-# )
-
-# Run the scheduler
-# scheduler.start()
