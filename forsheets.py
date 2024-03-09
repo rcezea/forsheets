@@ -1,5 +1,38 @@
 """
-Conversion of informal text to spreadsheet oriented formula
+Conversion of informal text to spreadsheet-oriented formula.
+
+This module provides functions for generating and explaining spreadsheet formulas based on user input. It utilizes the OpenAI API
+for natural language processing and model-driven responses.
+
+Functions:
+1. generate(user_input: str) -> Any:
+   - Generates a spreadsheet formula from user input.
+   - Uses the OpenAI GPT-3.5-turbo model for text-to-formula conversion.
+   - Returns the generated formula as a JSON string.
+
+2. lecture(user_input: str) -> Any:
+   - Explains a given spreadsheet formula.
+   - Uses the OpenAI GPT-3.5-turbo model to provide an explanation for the input formula.
+   - Returns the explanation as a JSON string.
+
+Note:
+- The module uses the OpenAI API key, which should be provided as an environment variable named OPENAI_API_KEY.
+- The OpenAI API key is loaded using the dotenv library from the .env file in the same directory as this module.
+
+Example Usage:
+```python
+from forsheet import generate, lecture
+
+# Generate a formula
+user_input = "Add the values in cells A1 to A10"
+formula = generate(user_input)
+print(formula)
+
+# Explain a formula
+user_input = "=SUM(B2:B10)"
+explanation = lecture(user_input)
+print(explanation)
+
 """
 
 import os
@@ -15,6 +48,13 @@ client = OpenAI(
 
 
 def generate(user_input: str) -> Any:
+    """
+        Generate spreadsheet formula from user input.
+
+        -   Extract Formula from JSON dump
+        -   Send Text through Flask to JS
+    """
+
     # Generate a formula
     response: json = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -33,6 +73,11 @@ def generate(user_input: str) -> Any:
 
 
 def lecture(user_input):
+    """
+        Explain the Generated Formula
+        -   Request explanation and extract response from JSON Dump
+        -   Send Response Through Flask to JS
+    """
     # Explain a formula
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
@@ -48,5 +93,3 @@ def lecture(user_input):
         presence_penalty=0.0,
     )
     return json.dumps(response.choices[0].message.content)
-
-# Convert this to spreadsheet formula
