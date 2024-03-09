@@ -1,19 +1,17 @@
 
-
 body {
-    background-color: #0c1107;
-    /*background-image: "cloud.png";*/
+    margin: 0;
+    background-color: #20448f;
     text-align: center;
-    height: 100vw;
-    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    scroll-behavior: smooth;
 }
 
 header {
-    font-family: Monaco;
     font-size: 60px;
-    font-weight: normal;
-    color: white;
-    text-align: left;
+    color: #e4e9f4;
+    margin-top: 20px;
 }
 
 header img {
@@ -22,6 +20,7 @@ header img {
 }
 
 .outer-container {
+    padding-top: 100px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -32,15 +31,15 @@ header img {
 #container {
     width: 60%;
     /*width: 800px;*/
-    height: 300px;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    background-color: #5e888c;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e4e9f4;
     margin: 80px auto 0;
-    border-radius: 15px;
-    padding: 20px 10px 0 10px;
+    border-radius: 20px;
+    /* padding: 0px 10px 0 10px; */
     /*justify-content: center;*/
     /*box-sizing: content-box;*/
 }
@@ -53,10 +52,11 @@ header img {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    color: #20448f;
     align-content: center;
     box-sizing: content-box;
     border-radius: 20px;
-    background-color: #bdd4e1;
+    background-color: white;
 
 }
 
@@ -76,12 +76,13 @@ header img {
 #entry-div {
     width: 40%;
     height: 80%;
-    background-color: #bdd4e1;
+    /* background-color: white; */
     border-radius: 15px;
     resize: none;
     padding: 5px;
+    margin: 0;
     font-size: 40px;
-    margin: 20px 0 0;
+    margin-top: 20px;
     position: relative;
 }
 
@@ -94,7 +95,7 @@ header img {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: #bdd4e1;
+    background-color: white;
 }
 
 #microphone {
@@ -108,10 +109,9 @@ header img {
     height: 100%;
     box-sizing: border-box;
     border-radius: 13px;
-    background-color: #bdd4e1;
+    background-color: white;
     resize: none;
     font-size: 20px;
-    border-color: #bdd4e1;
 }
 
 #conv-div {
@@ -142,7 +142,7 @@ header img {
     width: 40%;
     height: 80%;
     /*background-color: #cecefe;*/
-    background-color: #bdd4e1;
+    background-color: white;
     border-radius: 15px;
     resize: none;
     padding: 5px;
@@ -160,7 +160,7 @@ header img {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    background-color: #bdd4e1;
+    background-color: white;
 }
 
 #copy {
@@ -179,7 +179,7 @@ header img {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: #bdd4e1;
+    background-color: white;
 }
 
 #explain {
@@ -188,21 +188,99 @@ header img {
     margin: 0;
 }
 
-#survey {
-    color: darkslategrey;
-}
-.survey {
-    color: white;
+textarea {
+    outline-color: #20448f;
 }
 
-textarea {
-    background-color: #bdd4e1;
-    border: none;
+img {
+    cursor: pointer;
 }
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    line-height: 0;
+    bottom: 0; /* Place the footer at the bottom */
+    text-align: center;
+    height: 70px;
+    width: 100%;
+    background-color: #f7f7f7;
+    color: #333333;
+    margin: 0; /* Remove any default margin */
+    font-size: 15px;
+}
+
+footer > h3 > a {
+    text-decoration: none;
+    color: #20448f;
+}
+
+footer > p {
+    text-align: center;
+}
+
+footer > p :hover {
+    color: #0B36BB;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    text-align: center;
+}
+
+li {
+    float: left;
+}
+
+.right {
+    float: right;
+    padding-left: 20px;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 24px 35px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+li :not(#newone) :hover {
+    color: #0B36BB;
+}
+
+.goal {
+    font-size: 25px;
+}
+
+#new-one {
+    border-radius: 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+footer > a:hover{
+    font-size: 15px;
+}
+
 
 /* Phone screen portrait */
-@media screen and (min-width: 230px) and (orientation: portrait){
-    #container{
+@media screen and (min-width: 230px) and (orientation: portrait) {
+    #container {
         margin-top: 750px;
         scale: 1.5;
     }
