@@ -1,3 +1,15 @@
+/**
+ * User Authentication Form Handling
+ *
+ * This script handles form submissions for user signup and login using AJAX requests.
+ * It prevents the default form submission, sends data to the server, and redirects
+ * the user to the dashboard on successful authentication.
+ *
+ * Note: Assumes the presence of HTML forms with names 'signup_form' and 'login_form',
+ * and error elements with the class 'error'.
+ */
+
+// Signup Form Submission Handling
 $("form[name=signup_form]").submit(function(e) {
 
   const $form = $(this);
@@ -20,8 +32,9 @@ $("form[name=signup_form]").submit(function(e) {
   e.preventDefault();
 });
 
-$("form[name=login_form]").submit(function(e) {
+// Login Form Submission Handling
 
+$("form[name=login_form]").submit(function(e) {
   const $form = $(this);
   const $error = $form.find(".error");
   const data = $form.serialize();
