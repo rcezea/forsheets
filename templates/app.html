@@ -4,7 +4,7 @@
     <title>FORsheets</title>
     <link
             rel="stylesheet"
-            href="/static/styles/app.css"/>
+            href="../static/styles/app.css"/>
     <link
             rel="preconnect"
             href="https://fonts.googleapis.com"/>
@@ -14,51 +14,83 @@
     <link
             href="https://fonts.googleapis.com/css2?family=Monoton&display=swap"
             rel="stylesheet"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/static/images/favicon_io/apple-touch-icon.png">
+    <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/static/images/favicon_io/favicon-32x32.png">
+    <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/static/images/favicon_io/favicon-16x16.png">
+    <link
+            rel="manifest"
+            href="/static/images/favicon_io/site.webmanifest">
 </head>
     <body>
-        <header id="title">FORsheets</header>
+        <div class="nav-bar">
+            <ul>
+                <li  class="goal"><a href="/">FORsheets</a></li>
+                <div class="right">
+                    <li><strong><a href="/home">Home</a></strong></li>
+                    <li><strong><a href="/home#features">Features</a></strong></li>
+                    <li><strong><a href="/home#dev-team">Dev-team</a></strong></li>
+                    <li><strong id="new-one"><a href="/dashboard/">Dashboard</a></strong></li>
+                </div>
+              </ul>
+        </div>
         <div class="outer-container">
             <div id="container">
-                <div id="container-header">
+                <div title="Click On The Big Icon To Generate Formula" id="container-header">
                     <section><h3>Text</h3></section>
                     <section id="section-center"><h3>Convert</h3></section>
                     <section><h3>Formula</h3></section>
                 </div>
                 <div id="converter">
-                    <div id="entry-div">
-                        <label for="entry"></label><textarea id="entry" name="entry" placeholder="Enter text here"></textarea>
-                        <button id="microphone-button" type="submit">
-                            <img id="microphone" src="/static/images/microphone2.png" alt=""/>
+                    <div title="Enter User Input Here" id="entry-div">
+                        <!-- THIS--><label for="entry"></label><textarea id="entry" name="entry" placeholder="Enter text here"></textarea>
+                        <!-- THIS--><button id="microphone-button" type="submit">
+                            <!-- <img id="microphone" src="/static/images/microphone2.png" alt=""/> -->
+                            <img title="Click Microphone To Speak" id="microphone" src="/static/images/icons8-microphone-100.png" alt="speech to text" height="30px">
                         </button>
                     </div>
                     <div id="conv-div">
-                        <button
+                        <!-- THIS--><button
                                 id="convert-button"
                                 type="submit">
                             <img
+                                    title="Click To Generate Formula"
                                     id="convert-icon"
                                     src="/static/images/conv1.png"
                                     alt="Conversion icon"
                             />
                         </button>
                     </div>
-                    <div id="result-div">
-                        <label for="result"></label><textarea id="result" disabled></textarea>
-                        <button id="explain-button" type="submit">
-                            <img id="explain" src="/static/images/explain.png" alt=""/>
+                    <div title="Formula Displayed Here" id="result-div">
+                        <!-- THIS--><label for="result"></label><textarea id="result" disabled></textarea>
+                        <!-- THIS--><button id="explain-button" type="submit">
+                            <img title="Click To Get Explanation" id="explain" src="/static/images/icons8-speak-100.png" height="30px" alt="" />
                         </button>
-                        <button id="copy-button" type="submit">
-                            <img id="copy" src="/static/images/copy.png" alt=""/>
+                        <!-- THIS--><button id="copy-button" type="submit">
+                            <img title="Copy To Clipboard" id="copy" src="/static/images/icons8-copy-100.png" height="30px" alt=""/>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h1 class="survey">This is a demo</h1>
-        <h1 class="survey">Please participate in the survey below</h1>
-        <h1><a href="https://forms.gle/jhpvhLW6Mfaa4vSs6" id="survey" target="_blank">Click Me!</a></h1>
-
+        <footer>
+            <h3><a href="https://github.com/rcezea/forsheets" class="fa">&#xf09b FORsheets</a></h3>
+            <p>Copyright © <a href="mailto:rclancing@gmail.com">RcLancing</a></p>
+        </footer>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="/static/scripts/index.js"></script>
     </body>
