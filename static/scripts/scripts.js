@@ -11,7 +11,9 @@
 
 // Signup Form Submission Handling
 $("form[name=signup_form]").submit(function(e) {
-
+  if (!validateSignUp()){
+    return false;
+  }
   const $form = $(this);
   const $error = $form.find(".error");
   const data = $form.serialize();
@@ -35,6 +37,9 @@ $("form[name=signup_form]").submit(function(e) {
 // Login Form Submission Handling
 
 $("form[name=login_form]").submit(function(e) {
+  if (!validateSignIn()){
+    return false;
+  }
   const $form = $(this);
   const $error = $form.find(".error");
   const data = $form.serialize();

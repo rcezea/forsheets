@@ -5,8 +5,8 @@ $("#new-one").on("click", function () {
             if (data.session === true) {
                 console.log("Redirecting to /dashboard");
                 window.location.href = "/dashboard";
-            }else {
-                    showSignInModal();
+            } else {
+                showSignInModal();
             }
         },
     });
@@ -33,12 +33,12 @@ function closeModal() {
 
 
 // Sign-up Validation
-    function validateSignUp() {
-        const email = document.getElementById("signupEmail").value;
-        const password = document.getElementById("signupPassword").value;
-        const confirmPassword = document.getElementById("signupConfirmPassword").value;
+function validateSignUp() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("signupConfirmPassword").value;
 
-        // Check if email ends with '.babcock.edu.ng'
+    // Check if email ends with '.babcock.edu.ng'
     if (!email.endsWith('.babcock.edu.ng')) {
         alert("Email must end with '.babcock.edu.ng'");
         return false;
@@ -60,7 +60,7 @@ function closeModal() {
 
 // Sign-in Validation
 function validateSignIn() {
-    var email = document.getElementById("signinEmail").value;
+    const email = document.getElementById("signinEmail").value;
 
     // Check if email ends with '.babcock.edu.ng'
     if (!email.endsWith('.babcock.edu.ng')) {
