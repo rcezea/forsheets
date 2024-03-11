@@ -39,8 +39,8 @@ function validateSignUp() {
     const confirmPassword = document.getElementById("signupConfirmPassword").value;
 
     // Check if email ends with '.babcock.edu.ng'
-    if (!email.endsWith('.babcock.edu.ng')) {
-        alert("Email must end with '.babcock.edu.ng'");
+    if (!email.endsWith('babcock.edu.ng')) {
+        alert("Email must end with 'babcock.edu.ng'");
         return false;
     }
 
@@ -63,8 +63,8 @@ function validateSignIn() {
     const email = document.getElementById("signinEmail").value;
 
     // Check if email ends with '.babcock.edu.ng'
-    if (!email.endsWith('.babcock.edu.ng')) {
-        alert("Email must end with '.babcock.edu.ng'");
+    if (!email.endsWith('babcock.edu.ng')) {
+        alert("Email must end with 'babcock.edu.ng'");
         return false;
     }
 
