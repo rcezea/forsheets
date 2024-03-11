@@ -60,7 +60,8 @@ def generate(user_input: str) -> Any:
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system",
-             "content": "AI powered text to formula generator that generates spreadsheet formula from user input"},
+             "content": "AI powered text to formula generator that generates spreadsheet formula from user input "
+                        "without explanation"},
             {"role": "user", "content": "{}".format(user_input)}
         ],
         temperature=0,
