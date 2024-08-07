@@ -57,6 +57,7 @@ To run Forsheets, use the following command:
 
 ```bash
 python app.py
+```
 
 ## Feedback
 Your feedback is highly valued! If you've used or tested the tool, please share your thoughts in the [Issues](https://github.com/rcezea/forsheets/issues) section. Your insights will help us improve and tailor the generator to better meet user needs.
