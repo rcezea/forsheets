@@ -13,6 +13,51 @@ We welcome contributions from the community! If you're interested in enhancing t
 - Copy to clipboard button for easy formula sharing.
 - Generated formula explanations for enhanced understanding.
 
+## Technologies Used
+
+- Python
+- JavaScript
+- HTML
+- CSS
+- OpenAI API
+
+## Installation
+
+To set up Forsheets on your local machine, follow these steps:
+
+1. **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/your-username/forsheets.git
+    ```
+
+2. **Navigate to the project directory:**
+
+    ```bash
+    cd forsheets
+    ```
+
+3. **Install the required packages:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. **Set up your OpenAI API key:**
+
+    Create a `.env` file in the root directory of the project and add your OpenAI API key:
+
+    ```
+    OPENAI_API_KEY=your_openai_api_key
+    ```
+
+## Usage
+
+To run Forsheets, use the following command:
+
+```bash
+python app.py
+
 ## Feedback
 Your feedback is highly valued! If you've used or tested the tool, please share your thoughts in the [Issues](https://github.com/rcezea/forsheets/issues) section. Your insights will help us improve and tailor the generator to better meet user needs.
 
